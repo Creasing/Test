@@ -1,0 +1,94 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+/*
+Captain Jack and his crew of pirates arrive in Tortuga after several weeks of plundering
+the high seas. Since the crew has been at sea for nearly a month, they are ready for a
+night of celebration. Captain Jack doesn't want to divvy up the treasure just yet, so he
+gives each man in the crew (except for himself and the first mate) 3 pieces of gold and
+sends them into town to celebrate. After the crew has gone he and the first mate count
+what's left and decide how to split it up among the crew. Captain Jack decides that he'll
+take 12% of the gold. He counts out his gold and hides it in his cabin. The Captain agrees
+to give the first mate 8% of the remaining gold. The first mate counts out his coins and
+hides it in his cabin. The next morning, the gold that is left is divided evenly among
+the members of the crew, including Captain Jack and the First Mate. Little do they know
+that Cap'n Jack and the first mate have already taken a cut. If the remaining treasure
+can't be split evenly, the bits that are left over are given to the Pirate's Benevolent
+Association.
+*/
+namespace Project_2
+{
+    public partial class frmMain : Form
+    {
+        int AMOUNT_GOLD = 0;
+        int WHOLE_CREW = 0;
+        int JACKS_SHARE = 0;
+        int MATE1_SHARE = 0;
+        int WHOLE_CREW_PAYOUT = 0;
+ 
+        public frmMain()
+        {
+            InitializeComponent();
+           
+ 
+        }
+ 
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+           
+        }
+ 
+       
+        private void txtPirates_TextChanged(object sender, EventArgs e)
+        {
+             WHOLE_CREW = int.Parse(txtPirates.Text);
+        }
+ 
+        private void txtAmountGold_TextChanged(object sender, EventArgs e)
+        {
+             AMOUNT_GOLD = int.Parse(txtAmountGold.Text);
+        }
+        private void btnSplit_Click(object sender, EventArgs e)
+        {
+            const int
+               INITIAL_CREW_PAYOUT = 3,
+               NON_CREW_PIRATES = 2; //Captian Jack and First Mate
+ 
+            //Calculate jacks share
+            int JACKS_SHARE = (int)((INITIAL_CREW_PAYOUT - AMOUNT_GOLD) * 0.12);
+            //calculate the first mates share
+            int MATE1_SHARE = (int)(JACKS_SHARE * 0.08);
+                //each pirates share after jack and first mates cut
+            int WHOLE_CREW_PAYOUT = (int)(MATE1_SHARE / WHOLE_CREW);
+ 
+ 
+        }
+       
+ 
+        private void txtJack_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(JACKS_SHARE);
+        }
+ 
+        private void txtMate_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(MATE1_SHARE);
+        }
+ 
+        private void txtCrew_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine(WHOLE_CREW_PAYOUT);
+        }
+ 
+        private void txtFund_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+    }
+}
